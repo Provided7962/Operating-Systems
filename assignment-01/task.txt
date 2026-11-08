@@ -1,0 +1,30 @@
+Első beadandó feladat leírása
+
+Írjon bash scriptet ami három könyvtárnevet kap paraméterül. A script feladata, hogy kiírja egy log.txt nevü fájlba hogy a három közül melyik könyvtárban van a legkevesebb fájl, és hogy melyik könyvtárban van a legnagyobb fájl (csak könyvtárnév kell).
+
+A feladathoz használjon változókat,a tanult szűrőket, átirányításokat/parancsbehelyettesítést, de veezérlési szerkezetek ne.
+Ajánlott a manuált megnézni a következő utasításokhoz: ls, wc, sort.
+
+
+Vezérlési szerkezet használata(if, for, switch, while stb.) nem engedélyezett.
+
+$() utasításvégrehajtás nem engedélyezett, gyakorlaton nem használjuk.
+
+A program paraméterei:
+1-3. Pozicionális paraméter: könyvtárnév
+
+A program kimenete a képernyőn:
+(Nincs képernyőre kiírás a feladatban!)
+
+A program kimenete a log.txt-ben (csak ebben a sorrendben érvényes!):
+legkevesebb fájlt tartalmazó könyvtárnév
+legnagyobb fájlt tartalmazó könyvtárnév
+
+Minta futtatás:
+./run.sh /etc /bin /usr/bin
+
+Minta log.txt tartalma:
+/bin
+/usr/bin
+
+A minta a kinézetet és a használatot mutatja be, valós adatot NEM tartalmaz!

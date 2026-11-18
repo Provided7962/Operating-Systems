@@ -43,4 +43,3 @@ elif [ "$average" -eq "$readableCount" ]; then
 else
         echo "2" >> log.txt
 fi
-

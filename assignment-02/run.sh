@@ -1,13 +1,15 @@
 #!/bin/bash
 
-# Checking parameters
+# Checking  the numbers of the parameters
 if [ $# -ne 2 ]; then
     echo "Error: Exactly 2 parameters are required!" >&2
     exit 1
 fi
-
-# Check if first parameter is a real directory and exist
-if [ -d "$1" ]; then
+# Checking if the given parameters exist
+if [ ! -d "$1" ] || [ ! -d "$2" ]; then
+    echo "Error: The first and the second parameters are expected to be directories!" >&2
+    exit 1
+fi
     totalLines=0
     fileCount=0
     average=0
@@ -24,8 +26,21 @@ if [ -d "$1" ]; then
         average=`expr "$totalLines" / "$fileCount"`
     fi
     echo "$average" > log.txt
+
+    readableCount=0
+    for file in "$2"/*; do
+        if [ -f "$file" ] && [ -r "$file" ]; then
+            readableCount=`expr "$readableCount" + 1`
+        fi
+    done
+    echo "$readableCount" >> log.txt
+
+# Compare average with readableCount
+if [ "$average" -gt "$readableCount" ]; then
+    echo "1" >> log.txt
+elif [ "$average" -eq "$readableCount" ]; then
+        echo "0" >> log.txt
 else
-    # If first parameter is not a directory, exit.
-    echo "Error: The first parameter is not a directory!" >&2
-    exit 1
+        echo "2" >> log.txt
 fi
+

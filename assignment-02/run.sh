@@ -7,8 +7,24 @@ if [ $# -ne 2 ]; then
 fi
 
 # Check if first parameter is a real directory and exist
-if [ -d $1 ]; then
-    for file in $1; do
-        echo $file
+if [ -d "$1" ]; then
+    totalLines=0
+    fileCount=0
+    average=0
+    for file in "$1"/*; do
+        # Check if file and executable
+        if [ -f "$file" ] && [ -x "$file" ]; then
+            lines=`wc -l < "$file"`
+            totalLines=`expr "$totalLines" + "$lines"`
+            fileCount=`expr "$fileCount" + 1`
+        fi
     done
+    # Check the file count
+    if [ "$fileCount" -ne 0  ]; then
+        average=`expr "$totalLines" / "$fileCount"`
+    fi
+    echo "$average" > log.txt
+else
+    # If first parameter is not a directory, exit.
+    exit 1
 fi

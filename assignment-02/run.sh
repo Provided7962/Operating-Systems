@@ -26,5 +26,6 @@ if [ -d "$1" ]; then
     echo "$average" > log.txt
 else
     # If first parameter is not a directory, exit.
+    echo "Error: The first parameter is not a directory!" >&2
     exit 1
 fi
